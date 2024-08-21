@@ -1,28 +1,55 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement("h1", { id: "heading", className: "heading"}, "Hello React!");
+// React Element => Object => when render object onto the DOM, then it becomes a HTML element
 
-const parent = React.createElement(
-    "div", 
-    { id: "parent"},[
-        React.createElement("div", { id: "child1" }, 
-        [
-            React.createElement('h2', {}, "line 1 - This is Namaste React!"),
-            React.createElement('h2', {}, "line 2")
-        ]),
-        React.createElement("div", { id: "child2" }, 
-        [
-            React.createElement('h2', {}, "line 3"),
-            React.createElement('h2', {}, "line 4")
-        ])
-    ]
-    );
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Namaste JavaScript!"
+);
 
-const root = ReactDOM.createRoot(document.getElementById("root")); 
+// JSX
+const jsxHeading = <h1 id="heading">Namaste React using JSX!</h1>;
 
-//root.render(heading);
+const jsxSample = (
+  <div>
+    <h1 className="test">Test</h1>
+  </div>
+);
 
-root.render(parent);
+// * React Components
 
-// console.log(heading);
+// * What is a Functional Component?
+// const HeadingComponent = () => {
+//     return (<h1>Namaste React Component</h1>)
+// }
+
+const myName = <h1>Varghese Alex</h1>;
+
+const TempHeading = () => (
+  <div>
+    <h1>My name is Tommy Shelby!</h1>
+  </div>
+);
+
+const HeadingComponent = () => (
+  <div id="container">
+    <h1 className="heading">Namaste React Functional Component!</h1>
+    <SubComponent />
+    {myName}
+    <TempHeading />
+    <TempHeading></TempHeading>
+    {TempHeading()}
+  </div>
+);
+
+const SubComponent = () => <h2 className="subHeading">Taught by Akshay</h2>;
+
+console.log(heading);
+console.log(jsxHeading);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//root.render(jsxHeading);
+root.render(<HeadingComponent />);
